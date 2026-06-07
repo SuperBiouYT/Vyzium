@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Vyzium | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #050608;
+            --card-bg: rgba(15, 18, 25, 0.7);
+            --accent-color: #3bcf17;
+            --accent-glow: rgba(59, 207, 23, 0.25);
+            --text-main: #f5f6fa;
+            --text-muted: #8a96a3;
+            --border-color: rgba(59, 207, 23, 0.15);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: -25%;
+            left: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+            background: rgba(5, 6, 8, 0.8);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 35px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        section {
+            padding: 140px 8% 80px 8%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 16px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(59, 207, 23, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(59, 207, 23, 0.5);
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .section-title span {
+            color: var(--accent-color);
+        }
+
+        .manifesto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .manifesto-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .manifesto-card:hover {
+            border-color: rgba(59, 207, 23, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .manifesto-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .manifesto-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .team-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .team-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            border: 2px solid var(--border-color);
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .team-card .role {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(59, 207, 23, 0.1);
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 190px;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 40px rgba(59, 207, 23, 0.15);
+            transform: scale(1.02);
+        }
+
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-link {
+            color: var(--accent-color);
+        }
+
+        .project-link span {
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-link span {
+            transform: translateX(6px);
+        }
+
+        footer {
+            padding: 50px 8%;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            header { padding: 15px 5%; }
+            section { padding: 110px 5% 60px 5%; }
+            nav { display: none; }
+            footer { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <header>
+        <div class="logo-container">
+            <img src="asset/logo.png" alt="Team Vyzium Logo" class="logo-img">
+        </div>
+        <nav>
+            <a href="#hero" class="active">Accueil</a>
+            <a href="#vision">Vision</a>
+            <a href="#team">Direction</a>
+            <a href="#projects">Projets</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <h1><span>Team Vyzium</span></h1>
+        <p>Une équipe engagée contre le pay-to-win et la vacuité du contenu moderne. Nous développons l'utilité, la transparence et l'accessibilité.</p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn">Voir nos projets</a>
+        </div>
+    </section>
+
+    <section id="vision" class="reveal">
+        <h2 class="section-title">Notre <span>Vision</span></h2>
+        <div class="manifesto-grid">
+            <div class="manifesto-card">
+                <h3>Anti P2W</h3>
+                <p>Le mérite avant l'argent. Le talent et l'effort priment sur le portefeuille.</p>
+            </div>
+            <div class="manifesto-card">
+                <h3>No Brain Rot</h3>
+                <p>Pas de contenu vide. Uniquement des outils et projets concrets et utiles.</p>
+            </div>
+            <div class="manifesto-card">
+                <h3>Transparence</h3>
+                <p>Zéro secret. Nos codes et nos méthodes sont 100% ouverts à tous.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="reveal">
+        <h2 class="section-title">La <span>Direction</span></h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="asset/s3fp.png" alt="s3fp" class="team-avatar">
+                <h3>s3fp</h3>
+                <div class="role">CEO</div>
+            </div>
+            <div class="team-card">
+                <img src="asset/soso.png" alt="soso" class="team-avatar">
+                <h3>soso</h3>
+                <div class="role">CEO</div>
+            </div>
+            <div class="team-card">
+                <img src="asset/ninjago57.png" alt="ninjago57" class="team-avatar">
+                <h3>ninjago57</h3>
+                <div class="role">Co-Owner</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2 class="section-title">Nos <span>Projets</span></h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Best Leaks</h3>
+                <a href="https://discord.gg/gHx2vd79Gw" class="project-link">Accéder <span>→</span></a>
+            </div>
+
+            <div class="project-card">
+                <h3>OP Tools</h3>
+                <a href="https://discord.gg/gHx2vd79Gw" class="project-link">Accéder <span>→</span></a>
+            </div>
+
+            <div class="project-card" style="border-style: dashed; opacity: 0.7;">
+                <h3>And More...</h3>
+                <span style="color: var(--accent-color); font-weight:600; font-size:0.9rem;">Soon</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <div style="font-weight: 600; color: var(--text-main)">&copy; Team Vyzium.</div>
+            <div style="font-family: 'Space Grotesk', sans-serif;">Depuis <span style="color: var(--accent-color)">2025</span>.</div>
+        </div>
+        <div style="text-align: right;">
+            <a href="mailto:contact@vyzium.xyz" style="color: var(--text-muted); text-decoration: none; display: block; margin-bottom: 5px;">contact@vyzium.xyz</a>
+            <a href="https://discord.gg/gHx2vd79Gw" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Rejoindre le Discord <span>→</span></a>
+        </div>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            for (let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                let elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
