@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Vyzium | Portfolio</title>
-    <meta name="description" content="Team Vyzium - Une équipe engagée contre le pay-to-win et la vacuité du contenu moderne. Nous développons l'utilité, la transparence et l'accessibilité.">
+    <meta name="description" content="Team Vyzium - Une équipe engagée contre le pay-to-win et le brainrot.">
     <meta property="og:title" content="Team Vyzium">
-    <meta property="og:description" content="Une équipe engagée contre le pay-to-win et la vacuité du contenu moderne. Nous développons l'utilité, la transparence et l'accessibilité.">
+    <meta property="og:description" content="Une équipe engagée contre le pay-to-win et le brainrot.">
     <meta property="og:image" content="https://vyzium.xyz/asset/logo.png">
     <meta property="og:url" content="https://vyzium.xyz">
     <meta property="og:type" content="website">
@@ -317,6 +317,157 @@
             transform: translateY(0);
         }
 
+        .collab-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 8%;
+            background: rgba(59, 207, 23, 0.08);
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .collab-logo {
+            height: 24px;
+            width: auto;
+        }
+
+        .collab-banner strong {
+            color: var(--accent-color);
+        }
+
+        .join-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .join-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .join-card:hover {
+            border-color: rgba(59, 207, 23, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .join-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .join-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+        }
+
+        .join-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .join-card strong {
+            color: var(--accent-color);
+        }
+
+        .collab-section {
+            padding: 140px 8% 100px 8%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collab-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(59, 207, 23, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .collab-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .collab-section h2 span {
+            color: var(--accent-color);
+        }
+
+        .collab-section .sub {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        .collab-logo-link {
+            display: inline-block;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .collab-logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .collab-logo-link::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 207, 23, 0.3) 0%, transparent 70%);
+            animation: collab-pulse 2.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes collab-pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        .collab-section .collab-img {
+            width: 280px;
+            height: auto;
+            border-radius: 24px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 40px rgba(59, 207, 23, 0.15);
+            transition: box-shadow 0.4s ease;
+        }
+
+        .collab-logo-link:hover .collab-img {
+            box-shadow: 0 0 60px rgba(59, 207, 23, 0.35);
+        }
+
+        .collab-section .collab-desc {
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .collab-section .collab-desc strong {
+            color: var(--accent-color);
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             header { padding: 15px 5%; }
@@ -330,6 +481,11 @@
 
     <div class="ambient-glow"></div>
 
+    <div class="collab-banner">
+        <img src="asset/Collabe.png" alt="Aquerium" class="collab-logo">
+        <span>en collaboration avec</span>
+    </div>
+
     <header>
         <div class="logo-container">
             <img src="asset/logo.png" alt="Team Vyzium Logo" class="logo-img">
@@ -339,12 +495,13 @@
             <a href="#vision">Vision</a>
             <a href="#team">Direction</a>
             <a href="#projects">Projets</a>
+            <a href="#rejoindre">Rejoindre</a>
         </nav>
     </header>
 
     <section id="hero" class="hero">
         <h1><span>Team Vyzium</span></h1>
-        <p>Une équipe engagée contre le pay-to-win et la vacuité du contenu moderne. Nous développons l'utilité, la transparence et l'accessibilité.</p>
+        <p>Une équipe engagée contre le pay-to-win et le brainrot.</p>
         <div class="cta-buttons">
             <a href="#projects" class="btn">Voir nos projets</a>
         </div>
@@ -355,15 +512,12 @@
         <div class="manifesto-grid">
             <div class="manifesto-card">
                 <h3>Anti P2W</h3>
-                <p>Le mérite avant l'argent. Le talent et l'effort priment sur le portefeuille.</p>
             </div>
             <div class="manifesto-card">
                 <h3>No Brain Rot</h3>
-                <p>Pas de contenu vide. Uniquement des outils et projets concrets et utiles.</p>
             </div>
             <div class="manifesto-card">
                 <h3>Transparence</h3>
-                <p>Zéro secret. Nos codes et nos méthodes sont 100% ouverts à tous.</p>
             </div>
         </div>
     </section>
@@ -395,17 +549,40 @@
         <div class="projects-grid">
             <div class="project-card">
                 <h3>Best Leaks</h3>
-                <a href="https://discord.gg/gHx2vd79Gw" class="project-link">Accéder <span>→</span></a>
+                <a href="https://discord.gg/FVN4S23dJa" class="project-link">Accéder <span>→</span></a>
             </div>
 
             <div class="project-card">
                 <h3>OP Tools</h3>
-                <a href="https://discord.gg/gHx2vd79Gw" class="project-link">Accéder <span>→</span></a>
+                <a href="https://discord.gg/FVN4S23dJa" class="project-link">Accéder <span>→</span></a>
             </div>
 
             <div class="project-card" style="border-style: dashed; opacity: 0.7;">
                 <h3>And More...</h3>
                 <span style="color: var(--accent-color); font-weight:600; font-size:0.9rem;">Soon</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="rejoindre" class="reveal">
+        <h2 class="section-title">Comment <span>Rejoindre</span></h2>
+        <div class="join-grid">
+            <div class="join-card">
+                <div class="join-icon">💬</div>
+                <h3>Serveur Public</h3>
+                <p>Rejoins notre serveur Discord et crée un ticket.</p>
+                <a href="https://discord.gg/FVN4S23dJa" class="btn" style="margin-top: 20px;">Rejoindre</a>
+            </div>
+            <div class="join-card">
+                <div class="join-icon">✉️</div>
+                <h3>DM un Owner</h3>
+                <p>Envoie un message direct à <strong>s3fp</strong> sur Discord (recommandé).</p>
+            </div>
+            <div class="join-card">
+                <div class="join-icon">📧</div>
+                <h3>Par Email</h3>
+                <p>Contacte-nous à l'adresse suivante :</p>
+                <a href="mailto:contact@vyzium.xyz" style="color: var(--accent-color); font-weight: 700; text-decoration: none;">contact@vyzium.xyz</a>
             </div>
         </div>
     </section>
@@ -417,9 +594,18 @@
         </div>
         <div style="text-align: right;">
             <a href="mailto:contact@vyzium.xyz" style="color: var(--text-muted); text-decoration: none; display: block; margin-bottom: 5px;">contact@vyzium.xyz</a>
-            <a href="https://discord.gg/gHx2vd79Gw" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Rejoindre le Discord <span>→</span></a>
+            <a href="https://discord.gg/FVN4S23dJa" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Rejoindre le Discord <span>→</span></a>
         </div>
     </footer>
+
+    <section class="collab-section reveal">
+        <h2>en collaboration avec <span>Aquerium</span></h2>
+        <p class="sub">Une équipe de montage vidéo passionnée, prête à t'aider à créer des visuels percutants pour tes projets.</p>
+        <a href="https://discord.gg/qqcDqtHhuU" target="_blank" class="collab-logo-link">
+            <img src="asset/Collabe.png" alt="Aquerium" class="collab-img">
+        </a>
+        <p class="collab-desc">Clique sur le logo pour rejoindre <strong>Aquerium</strong> et découvrir leur travail.</p>
+    </section>
 
     <script>
         const reveals = document.querySelectorAll('.reveal');
